@@ -53,7 +53,7 @@ jobs:
     - name: Setup Kubectl
       uses: azure/setup-kubectl@v3
     
-        - name: Setup Terraform
+    - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
 
 
