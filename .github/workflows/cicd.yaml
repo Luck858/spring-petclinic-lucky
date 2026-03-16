@@ -79,6 +79,14 @@ jobs:
         mkdir -p ~/.kube
         echo "${{ secrets.KUBE_CONFIG }}" > ~/.kube/config
 
+    - name: Get AKS Credentials
+      run: |
+       az aks get-credentials \
+        --resource-group myRG \
+        --name myAKSCluster \
+        --overwrite-existing
+
+
 
     - name: Deploy to Kubernetes
       run: |
