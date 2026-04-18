@@ -7,4 +7,4 @@ jobs:
     uses: Luck858/remoterepo/.github/workflows/reusable.yaml@main
     with:
       java-version: "21"
-      mvn-command: mvn clean package
+      mvn-command: "mvn clean package"
