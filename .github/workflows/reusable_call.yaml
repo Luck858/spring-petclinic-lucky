@@ -1,0 +1,35 @@
+name: reusable maven build
+
+on:
+  workflow_call:
+    inputs:
+      java-version:
+        required: false
+        type: string
+        default: "17"
+      mvn-command:
+        required: false
+        type: string
+        default: "mvn clean package"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ inputs.java-version }}
+          distribution: 'temurin'
+
+      - name: Build with Maven
+        run: ${{ inputs.mvn-command }}
+
+      - name: Upload-artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifact
+          path: target/*.jar
